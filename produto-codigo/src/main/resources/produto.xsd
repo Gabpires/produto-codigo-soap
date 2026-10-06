@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://br.products.cod.br/produto"
+    xmlns:tns="http://br.products.cod.br/produto"
+    elementFormDefault="qualified">
+
+    <!-- REQUISIÇÃO -->
+    <xs:element name="consultarProdutoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigo"  type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- RESPOSTA -->
+    <xs:element name="consultarProdutoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nomeproduto" type="xs:string"/>
+                <xs:element name="descricao" type="xs:string"/>
+                <xs:element name="marca" type="xs:string"/>
+                <xs:element name="estoque" type="xs:string"/>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

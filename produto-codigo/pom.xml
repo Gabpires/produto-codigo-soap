@@ -40,6 +40,12 @@
 			<artifactId>spring-boot-starter-webservices-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+    <groupId>wsdl4j</groupId>
+    <artifactId>wsdl4j</artifactId>
+</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -48,6 +54,37 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>jaxb2-maven-plugin</artifactId>
+    <version>3.3.0</version>
+
+    <executions>
+        <execution>
+            <id>xjc</id>
+
+            <goals>
+                <goal>xjc</goal>
+            </goals>
+
+        </execution>
+    </executions>
+
+    <configuration>
+
+        <sources>
+            <source>
+                src/main/resources/produto.xsd
+            </source>
+        </sources>
+
+        <packageName>
+           br.products.cod.br.model
+        </packageName>
+
+    </configuration>
+</plugin>
 		</plugins>
 	</build>
 
