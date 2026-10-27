@@ -12,7 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 @Endpoint
 public class ProdutoEndpoint {
 
-    private static final String NAMESPACE = "http://br.products.cod.br/produto";
+    private static final String NAMESPACE = "http://produto.codigo.br/produto";
 
     @PayloadRoot(namespace = NAMESPACE, localPart = "consultarProdutoRequest")
     @ResponsePayload

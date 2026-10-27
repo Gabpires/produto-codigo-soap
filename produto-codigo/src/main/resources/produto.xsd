@@ -2,8 +2,8 @@
 
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://br.products.cod.br/produto"
-    xmlns:tns="http://br.products.cod.br/produto"
+    targetNamespace="http://produto.codigo.br/produto"
+    xmlns:tns="http://produto.codigo.br/produto"
     elementFormDefault="qualified">
 
     <!-- REQUISIÇÃO -->

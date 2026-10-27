@@ -39,7 +39,7 @@ public class WebServiceConfig implements WsConfigurer {
         return new ServletRegistrationBean<>(servlet, "/ws/*");
     }
 
-    @Bean(name = "clientes")
+    @Bean(name = "produto")
     public DefaultWsdl11Definition defaultWsdl11Definition(
             XsdSchema clientesSchema) {
 
@@ -47,7 +47,7 @@ public class WebServiceConfig implements WsConfigurer {
 
         wsdl.setPortTypeName("ProdutoPort");
         wsdl.setLocationUri("/ws");
-        wsdl.setTargetNamespace("http://produto.codigo.br/codigo");
+        wsdl.setTargetNamespace("http://produto.codigo.br/produto");
         wsdl.setSchema(clientesSchema);
 
         return wsdl;
