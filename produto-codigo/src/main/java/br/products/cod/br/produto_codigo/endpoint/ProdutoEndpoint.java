@@ -1,7 +1,8 @@
 package br.products.cod.br.produto_codigo.endpoint;
 
-import br.products.cod.br.model.ConsultarProdutoRequest;
-import br.products.cod.br.model.ConsultarProdutoResponse;
+import br.products.cod.br.produto_codigo.exception.ProdutoNaoEncontradoException;
+import br.products.cod.br.produto_codigo.schema.ConsultarProdutoRequest;
+import br.products.cod.br.produto_codigo.schema.ConsultarProdutoResponse;
 
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -13,28 +14,21 @@ public class ProdutoEndpoint {
 
     private static final String NAMESPACE = "http://br.products.cod.br/produto";
 
-    @PayloadRoot( namespace = NAMESPACE, localPart = "consultarProdutoRequest"  )
+    @PayloadRoot(namespace = NAMESPACE, localPart = "consultarProdutoRequest")
     @ResponsePayload
-    public ConsultarProdutoResponse consultarProduto( @RequestPayload ConsultarProdutoRequest request) {
+    public ConsultarProdutoResponse consultarCliente(
+            @RequestPayload ConsultarProdutoRequest request) {
 
-        ConsultarProdutoResponse response =  new ConsultarProdutoResponse();
-
-        if (request.getCodigo() == 12345) {
-
+        if (request.getCodigo() == 1) {
+            ConsultarProdutoResponse response = new ConsultarProdutoResponse();
             response.setNomeproduto("Arroz 5kg");
-            response.setDescricao("Pacote de 5kg de arroz");
-            response.setMarca("São João");
+            response.setDescricao("pacote com 5kg de arroz");
+            response.setMarca("tio joao");
             response.setEstoque("5 pacotes");
-
-
-        } else {
-
-            response.setNomeproduto( "Produto não encontrado" );
-            response.setDescricao("-");
-            response.setMarca("-");
-            response.setEstoque("-");
+            return response;
         }
 
-        return response;
+        throw new ProdutoNaoEncontradoException(
+                "Produto não encontrado no estoque: " + request.getCodigo());
     }
 }
